@@ -17,6 +17,7 @@ namespace Content.API.Events
         [RabbitListener(Constants.RECEIVE_AND_CONVERT_QUEUE)]
         public void ListenForAMessage(string msg)
         {
+            // It goes into retry mode in this exception case and keep on hitting this listener
             throw new Exception("new custom exception");
             Console.WriteLine(msg);
         }
